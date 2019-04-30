@@ -1,0 +1,21 @@
+<h3>Derniers ragôts</h3>
+<div class="card-columns border-info container ">
+  <% puts '*' * 50 %>
+  <% puts @gossips %>
+  <% puts '*' * 50 %>
+  <% Gossip.all.each do | gossip | %>
+    <div class="card border-info text-white bg-info mb-3">
+    <div class="card-header bg-light text-warning">
+        <%= link_to 'Auteur:', user_show_path(:user_id => gossip.user.id), style: "text-decoration: none" %>
+        <%= gossip.user.first_name %> <%= gossip.user.last_name %>
+    </div>
+    <div class="card-body">
+        Titre du ragôt : 
+        <h5 class="card-title"><%= gossip.title %></h5>
+        <%= link_to 'Détail', gossip_path(:id => gossip.id), class: 'btn btn-secondary bg-info' %>
+    </div>
+    </div>
+  <% end %>
+</div>
+
+

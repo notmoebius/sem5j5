@@ -1,0 +1,8 @@
+<h2>PAGE POTIN !</h2>
+
+  <p> Voici le potin n° <%= @gossip.id%><br/>
+  Son auteur : <%= @gossip.user.last_name %><br/>
+  Le titre : <%= @gossip.title %><br/>
+  Créé le : <%= @gossip.created_at.strftime('%d/%m/%Y') %><br/>
+  Le contenu du potin : <%= @gossip.content %>
+  </p>
