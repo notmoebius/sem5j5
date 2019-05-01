@@ -24,7 +24,6 @@ This applicaiton is made with love by **Alexandre Labonne (@Lab's)** and **Brice
 ## Configuration
 - faire un ```git clone git@github.com:notmoebius/sem5j1.git```
 - ```cd rep_rails_du_projet```
-- ```rm Gemfile.lock``` puis
 - ```bundle install```
 - faire un ```rails db:create``` pour la BDD
 - faire un ```rails db:migrate```pour créer les tables de la BDD
@@ -32,7 +31,7 @@ This applicaiton is made with love by **Alexandre Labonne (@Lab's)** and **Brice
 
 ## How to run the test suite
 - Lancer le serveur avec ```$ rails server```
-- Dans le navigateur, ==http://localhost:3000==
+- Dans le navigateur, == http://localhost:3000 ==
 
 ## Les fonctionnalités
 L'application permet:
@@ -47,4 +46,4 @@ L'application permet:
 
 - Tu peux ajouter un nouveau potin et l'éditer avec mise en oeuvre du CRUD de rails.
 
-- une page cachée est accessible : en saisissant l'URI suivante: http://localhost:3000/welcome/votre_nom où 'votre_nom' est un texte libre...
+- une page cachée est accessible : en saisissant l'URI suivante: http://localhost:3000/welcome/votre_nom
