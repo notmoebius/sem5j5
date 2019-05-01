@@ -1,4 +1,10 @@
-<h2>PAGE POTIN !</h2>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">PAGE D'UN POTIN</h1>
+    <p class="lead">En savoir plus ...</p>
+  </div>
+</div>
 
   <p> Voici le potin n° <%= @gossip.id%><br/>
   Le titre : <%= @gossip.title %><br/>
@@ -6,5 +12,7 @@
   Son auteur : <%= @gossip.user.first_name %> <%= link_to @gossip.user.last_name, user_path(:id => @gossip.user.id), style: "text-decoration: none" %><br/>
   Habitant de : <%= @gossip.user.city.name %><br/>
   Créé le : <%= @gossip.created_at.strftime('%d/%m/%Y') %><br/>
-
   </p>
+  
+  <a class="btn btn-secondary " href="<%= edit_gossip_path %>" role="button">Modifier</a>
+  <a class="btn btn-outline-danger" href="<%= gossip_path(@gossip.id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE" role="button">Supprimer</a>

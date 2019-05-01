@@ -16,12 +16,22 @@ class GossipsController < ApplicationController
   end
 
   def update 
+    @gossip = Gossip.find(params[:id])
+    if @gossip.update('title' => params[:title], 'content' => params[:content], 'user_id' => @gossip.user_id)
+      redirect_to @gossip
+    else
+      render :edit
+    end
   end
 
   def edit
+    @gossip = Gossip.find(params[:id])
   end
 
   def destroy
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
+    redirect_to gossips_path
   end
 
   def index
