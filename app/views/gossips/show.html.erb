@@ -1,26 +1,45 @@
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">PAGE D'UN POTIN</h1>
-    <p class="lead">En savoir plus ...</p>
+    <h1 class="display-4">Woops, un potin !</h1>
+    <p class="lead">Qu'est ce que nous avons la...</p>
   </div>
 </div>
 
-  <p> Voici le potin n° <%= @gossip.id%><br/>
-  Le titre : <%= @gossip.title %><br/>
-  Le contenu du potin : <%= @gossip.content %><br/>
-  Son auteur : <%= @gossip.user.first_name %> <%= link_to @gossip.user.last_name, user_path(:id => @gossip.user.id), style: "text-decoration: none" %><br/>
-  Habitant de : <a href="<%= city_path %>" role="button"> <%= @gossip.user.city.name %> </a><br/>
-  Créé le : <%= @gossip.created_at.strftime('%d/%m/%Y') %><br/>
-  </p>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Voici le potin n° <%= @gossip.id%></li>
+  </ol>
+</nav>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Créé le : <%= @gossip.created_at.strftime('%d/%m/%Y') %></li>
+  </ol>
+</nav>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">
+    Auteur : <%= @gossip.user.first_name %> <%= link_to @gossip.user.last_name, user_path(:id => @gossip.user.id), style: "text-decoration: none" %><br/>
+    Titre : <%= @gossip.title %><br/>
+    Contenu : <%= @gossip.content %><br/></li>
+  </ol>
+</nav>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Habitant de : <a href="<%= city_path %>" role="button"> <%= @gossip.user.city.name %></li>
+  </ol>
+</nav>
   
- 
   <a class="btn btn-secondary " href="<%= edit_gossip_path %>" role="button">Modifier</a>
   <a class="btn btn-outline-danger" href="<%= gossip_path(@gossip.id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE" role="button">Supprimer</a>
-
+<br/>
+<br/>
   <%= form_tag(comments_path, method: 'post') do %>
   <%= hidden_field_tag('gossip_id', params[:id] )%>
-  <%= label_tag 'Contenu du commentaire : ' %>
+  <%= label_tag 'Commentaire : ' %>
   <%= text_area_tag 'content', nil %>
   <br /> <br />
 
@@ -32,7 +51,7 @@
       <h4 class="desc-title">Commentaire de <%= comm.user_id %> </h4>
       <p class="desc"><%= comm.content %></p>
       <div class="show-edit">
-        <%= link_to 'Editer', edit_comment_path(comm.id), class:'article-btn', confirm: 'Etes-vous sûr ?' %>
+        <%= link_to 'Editer', edit_comment_path(comm.id), class:'article-btn', confirm: 'Êtes-vous sûr ?' %>
         <%= link_to 'Supprimer', comment_path(comm.id), method: 'delete', class:'article-btn btn-grey'%>
       </div>
     </article>
