@@ -5,12 +5,20 @@
     <p class="lead">Regardez ce qui se dit sur vous...</p>
   </div>
 </div>
+
+<%= link_to "Nouveau potin", new_gossip_path, class: "btn btn-secondary bg-info'" %>
+
 <div class="card-columns border-info container ">
   <% Gossip.all.each do | gossip | %>
     <div class="card border-info text-white bg-info mb-3">
     <div class="card-header bg-light text-warning">
         <%= link_to 'Auteur:', user_path(:id => gossip.user.id), style: "text-decoration: none" %>
         <%= gossip.user.first_name %> <%= gossip.user.last_name %>
+        <% if @comment_count[gossip.id] != nil %>
+          <button type="button" class="btn btn-primary">
+          Post <span class="badge badge-light"><%= @comment_count[gossip.id]%> </span>
+          </button>
+          <% end %>
     </div>
     <div class="card-body">
         Titre du ragôt : 

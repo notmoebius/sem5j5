@@ -37,6 +37,7 @@ class GossipsController < ApplicationController
 
   def index
     @gossip = Gossip.all
+    @comment_count = Comment.group(:gossip_id).count
   end
 
   def show

@@ -10,7 +10,7 @@
   Le titre : <%= @gossip.title %><br/>
   Le contenu du potin : <%= @gossip.content %><br/>
   Son auteur : <%= @gossip.user.first_name %> <%= link_to @gossip.user.last_name, user_path(:id => @gossip.user.id), style: "text-decoration: none" %><br/>
-  Habitant de : <%= @gossip.user.city.name %><br/>
+  Habitant de : <a href="<%= city_path %>" role="button"> <%= @gossip.user.city.name %> </a><br/>
   Créé le : <%= @gossip.created_at.strftime('%d/%m/%Y') %><br/>
   </p>
   
