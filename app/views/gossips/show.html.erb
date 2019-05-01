@@ -14,5 +14,6 @@
   Créé le : <%= @gossip.created_at.strftime('%d/%m/%Y') %><br/>
   </p>
   
+  <a class="btn btn-btn-warning " href="<%= new_comment_path(@gossip.id) %>" role="button">Commenter</a>
   <a class="btn btn-secondary " href="<%= edit_gossip_path %>" role="button">Modifier</a>
   <a class="btn btn-outline-danger" href="<%= gossip_path(@gossip.id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE" role="button">Supprimer</a>

@@ -1,19 +1,22 @@
-
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Créer mon potin<</h1>
+    <h1 class="display-4">Créer mon commentaire</h1>
     <p class="lead">formulaire de création ci-dessous</p>
   </div>
 </div>
 
- <% if @gossip.errors.any? %>
+<% puts "$" * 60%>
+<% puts @point_comment.inspect %>
+<% puts "$" * 60%>
+
+ <% if @comment.errors.any? %>
   <div style="padding: 5px;">
     <div class="alert alert-danger" role="alert">
       <h4 class="alert-heading">Ouups !!</h4>
       <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
       <hr>
       <ul>
-        <% @gossip.errors.full_messages.each do |message| %>
+        <% @comment.errors.full_messages.each do |message| %>
           <li><p class="mb-0"><%= message %></p></li>
         <% end %>
       </ul>
@@ -23,15 +26,10 @@
  
 <%= form_tag url_for(action: 'create'), method: "post" do %>
 
-  <%= label_tag 'Titre du potin : ' %>
-  <%= text_field_tag 'title', @gossip.title %>
+  <%= label_tag 'Contenu du commentaire : ' %>
+  <%= text_area_tag 'content', @comment.content %>
   <br /> <br />
 
-  <%= label_tag 'Contenu du potin : ' %>
-  <%= text_area_tag 'content', @gossip.content %>
-  <br /> <br />
-
-  <%= submit_tag "Envoyer mon potin", class: "btn btn-secondary " %>
+  <%= submit_tag "Envoyer mon commentaire", class: "btn btn-secondary " %>
 
 <% end %>
-
