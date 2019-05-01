@@ -1,7 +1,6 @@
 # The Gossip Project in Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Projet avec Rails et CRUD
 
 This applicaiton is made with love by **Alexandre Labonne (@Lab's)** and **Brice Jones (@brice)** from Toulouse.
 
@@ -45,5 +44,7 @@ L'application permet:
 - l'item du menu Team affiche les membres de la team Toulouse
 
 - l'item du menu Contact affiche les contacts pour nous joindre.
+
+- Tu peux ajouter un nouveau potin et l'éditer avec mise en oeuvre du CRUD de rails.
 
 - une page cachée est accessible : en saisissant l'URI suivante: http://localhost:3000/welcome/votre_nom où 'votre_nom' est un texte libre...
