@@ -1,30 +1,27 @@
 class CommentsController < ApplicationController
   def new
-    @comment = Comment.new
-    @point_comment = Gossip.find(params[:id])
-    puts "$" * 60
-    puts params[:id]
-    puts @point_comment.inspect
-    puts "$" * 60
+    #@comment = Comment.new
   end
 
   def create
-    @comment = Comment.new('gossip_id' => @point_comment, 'content' => params[:content], user_id: '1')
-
-    puts "*" * 60
-    puts @comment.inspect
-    puts "*" * 60
-
+    @comment = Comment.new('gossip_id' => params[:gossip_id], 'content' => params[:content], user_id: '1')
     if @comment.save
-      puts "The super potin was succesfully saved !"
-      redirect_to '/gossip/#{:id}'
+      puts "The super commentaires was succesfully saved !"
+      redirect_to '/'
     else
-      puts "Error : you need to complete this field / the title must be at least 3 characters longue / etc."
-      render'/comments/new'
+      puts "Error : you need to complete this field user_id/gossip_id"
+      render '/gossips'
     end
   end
 
   def update
+    @comment = Comment.find(params[:id])
+    @comment_params = params.permit(:content)
+    if @comment.update(@comment_params)
+      redirect_to '/'
+    else
+      render :edit
+    end
   end
 
   def edit
@@ -32,6 +29,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to gossips_path
   end
 
   def index

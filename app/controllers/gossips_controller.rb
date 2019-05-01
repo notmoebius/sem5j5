@@ -1,6 +1,7 @@
 class GossipsController < ApplicationController
   def new
     @gossip = Gossip.new
+    @comment = Comment.new
   end
 
   def create
@@ -11,7 +12,7 @@ class GossipsController < ApplicationController
       redirect_to '/'
     else
       puts "Error : you need to complete this field / the title must be at least 3 characters longue / etc."
-      render'/gossips/new'
+      render '/gossips/new'
     end
   end
 
@@ -40,5 +41,6 @@ class GossipsController < ApplicationController
 
   def show
     @gossip = Gossip.find(params[:id])
+    @comment = Comment.where('gossip_id': @gossip.id)
   end
 end

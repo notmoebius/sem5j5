@@ -14,6 +14,28 @@
   Créé le : <%= @gossip.created_at.strftime('%d/%m/%Y') %><br/>
   </p>
   
-  <a class="btn btn-btn-warning " href="<%= new_comment_path(@gossip.id) %>" role="button">Commenter</a>
+ 
   <a class="btn btn-secondary " href="<%= edit_gossip_path %>" role="button">Modifier</a>
   <a class="btn btn-outline-danger" href="<%= gossip_path(@gossip.id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE" role="button">Supprimer</a>
+
+  <%= form_tag(comments_path, method: 'post') do %>
+  <%= hidden_field_tag('gossip_id', params[:id] )%>
+  <%= label_tag 'Contenu du commentaire : ' %>
+  <%= text_area_tag 'content', nil %>
+  <br /> <br />
+
+  <%= submit_tag "Poster", class: "btn btn-secondary " %>
+
+
+  <% @comment.each do |comm| %>
+    <article> 
+      <h4 class="desc-title">Commentaire de <%= comm.user_id %> </h4>
+      <p class="desc"><%= comm.content %></p>
+      <div class="show-edit">
+        <%= link_to 'Editer', edit_comment_path(comm.id), class:'article-btn', confirm: 'Etes-vous sûr ?' %>
+        <%= link_to 'Supprimer', comment_path(comm.id), method: 'delete', class:'article-btn btn-grey'%>
+      </div>
+    </article>
+  <% end %> 
+
+<% end %>
