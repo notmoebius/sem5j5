@@ -7,6 +7,7 @@ PrivateMessage.destroy_all
 User.destroy_all
 Gossip.destroy_all
 TagGossip.destroy_all
+Comment.destroy_all
 
 # seed pour les city
 puts '-> Je charge un jeu d\'essai city'
@@ -45,7 +46,7 @@ puts '-> Je charge un jeu d\'essai User'
     description: Faker::Lorem.sentence,
     email: Faker::Internet.email,
     age: Faker::Number.between(7, 77),
-    password_digest: 'password'
+    password_digest: 'password',
     city_id: City.all.sample.id
   )
 end
@@ -71,5 +72,16 @@ puts '-> Je charge un jeu d\'essai Tag_Gossip'
   )
 end
 puts 'Jeu d\'essai Tag_Gossip avec 10 items'
+
+# seed pour les city
+puts '-> Je charge un jeu d\'essai comment'
+30.times do
+  Comment.create!(
+    name: Faker::Address.city,
+    zip_code: Faker::Base.regexify(/[0-8][0-9][0-9]{3}/)
+  )
+end
+puts 'Jeu d\'essai Comment avec 30 items'
+
 puts '***** Base de données chargée avec un seed ! Have a nive run.'
 
