@@ -45,6 +45,7 @@ puts '-> Je charge un jeu d\'essai User'
     description: Faker::Lorem.sentence,
     email: Faker::Internet.email,
     age: Faker::Number.between(7, 77),
+    password_digest: 'password'
     city_id: City.all.sample.id
   )
 end
