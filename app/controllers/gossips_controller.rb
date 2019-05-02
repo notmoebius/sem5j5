@@ -1,11 +1,13 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, only: [:new, :create, :show]
+
   def new
     @gossip = Gossip.new
     @comment = Comment.new
   end
 
   def create
-    @gossip = Gossip.new('title' => params[:title], 'content' => params[:content], user_id: '1')
+    @gossip = Gossip.new('title' => params[:title], 'content' => params[:content], 'user_id' => current_user.id)
 
     if @gossip.save
       puts "The super potin was succesfully saved !"
@@ -43,5 +45,14 @@ class GossipsController < ApplicationController
   def show
     @gossip = Gossip.find(params[:id])
     @comment = Comment.where('gossip_id': @gossip.id)
+  end
+
+  private
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Please log in."
+      redirect_to new_session_path
+    end
   end
 end

@@ -1,10 +1,12 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user, only: [:new, :create]
+
   def new
     #@comment = Comment.new
   end
 
   def create
-    @comment = Comment.new('gossip_id' => params[:gossip_id], 'content' => params[:content], user_id: '1')
+    @comment = Comment.new('gossip_id' => params[:gossip_id], 'content' => params[:content], user_id: current_user.id)
     if @comment.save
       puts "The super commentaires was succesfully saved !"
       redirect_to '/'
@@ -40,5 +42,14 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
+  end
+
+  private
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Please log in."
+      redirect_to new_session_path
+    end
   end
 end

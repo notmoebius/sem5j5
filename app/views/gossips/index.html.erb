@@ -2,6 +2,11 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">Derniers ragôts !</h1>
+    <% if logged_in? %>
+      <h1 class="display-6">Bienvenue <%= current_user.email %> ! </h1>
+    <% else %>
+      <h1 class="display-6">Bienvenue ! </h1>
+    <% end %>  
     <p class="lead">Regardez ce qui se dit sur vous...</p>
   </div>
 </div>

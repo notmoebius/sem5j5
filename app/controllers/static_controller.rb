@@ -5,6 +5,4 @@ class StaticController < ApplicationController
   def contact
   end
 
-  def profile
-  end
 end

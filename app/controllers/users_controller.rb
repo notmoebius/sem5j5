@@ -21,13 +21,14 @@ class UsersController < ApplicationController
         @user = User.create('email': params[:email], 'password_digest': BCrypt::Password.create(params[:password]))
         #@user = User.create('email': params[:email], 'password_digest': params[:password]) #ne crypte pas le PW
         puts "The user #{params[:email]}was succesfully saved !"
-          flash[:success] = "Utilisateur bien créé !"
+        flash[:success] = "Utilisateur bien créé !"
+        log_in(@user)
         redirect_to '/'
      end
   end
 
   def edit
-    # Méthode qui récupère le potin concerné et l'envoie à la view edit (edit.html.erb) pour affichage dans un formulaire d'édition
+    
   end
 
   def update
