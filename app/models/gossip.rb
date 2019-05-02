@@ -4,6 +4,6 @@ class Gossip < ApplicationRecord
   has_many :tags, through: :tag_gossips
   has_many :comments
 
-  validates :title, presence: true, length: { minimum: 3, maximum: 14, message: "title need 3 car. or less than 14 car"} 
-  validates :content,presence: true
+  #validates :title, presence: true, length: { minimum: 3, maximum: 14, message: "title need 3 car. or less than 14 car"} 
+  #validates :content,presence: true
 end
