@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @all_cities = City.all
   end
 
   def create
@@ -18,7 +19,9 @@ class UsersController < ApplicationController
       puts "Error : you need to complete this field email/pw"
       render '/users/new'
      else
-        @user = User.create('email': params[:email], 'password_digest': BCrypt::Password.create(params[:password]))
+
+        @user = User.create('last_name': params[:last_name], 'first_name': params[:first_name], 'email': params[:email], 'age': params[:age], 'password_digest': BCrypt::Password.create(params[:password]), 'description': params[:description], 'city_id': params[:city].to_i)
+        #@user = User.create('email': params[:email], 'password_digest': BCrypt::Password.create(params[:password])
         #@user = User.create('email': params[:email], 'password_digest': params[:password]) #ne crypte pas le PW
         puts "The user #{params[:email]}was succesfully saved !"
         flash[:success] = "Utilisateur bien créé !"

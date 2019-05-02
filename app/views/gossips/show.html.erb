@@ -32,10 +32,6 @@
     <li class="breadcrumb-item active" aria-current="page">Habitant de : <a href="<%= city_path %>" role="button"> <%= @gossip.user.city.name %></li>
   </ol>
 </nav>
-      <% puts "*" * 60%>
-      <% puts current_user.id %>
-      <% puts @gossip.user_id %>
-        <% puts "*" * 60%>
   <% if current_user.id == @gossip.user_id %>
     <a class="btn btn-secondary " href="<%= edit_gossip_path %>" role="button">Modifier</a>
     <a class="btn btn-outline-danger" href="<%= gossip_path(@gossip.id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE" role="button">Supprimer</a>
