@@ -1,20 +1,29 @@
+require 'bcrypt'
 class UsersController < ApplicationController
+
   def show
     @user = User.find(params[:id])
   end
 
   def index
-    # Méthode qui récupère tous les potins et les envoie à la view index (index.html.erb) pour affichage
+    
   end
 
   def new
-    # Méthode qui crée un potin vide et l'envoie une view qui affiche le formulaire pour 'le remplir' (new.html.erb)
+    @user = User.new
   end
 
   def create
-    # Méthode qui créé un potin à partir du contenu du formulaire de new.html.erb, soumis par l'utilisateur
-    # pour info, le contenu de ce formulaire sera accessible dans le hash params (ton meilleur pote)
-    # Une fois la création faite, on redirige généralement vers la méthode show (pour afficher le potin créé)
+    if params[:password] == '' || params[:email] == ''
+      puts "Error : you need to complete this field email/pw"
+      render '/users/new'
+     else
+        @user = User.create('email': params[:email], 'password_digest': BCrypt::Password.create(params[:password]))
+        #@user = User.create('email': params[:email], 'password_digest': params[:password]) #ne crypte pas le PW
+        puts "The user #{params[:email]}was succesfully saved !"
+          flash[:success] = "Utilisateur bien créé !"
+        redirect_to '/'
+     end
   end
 
   def edit
@@ -28,7 +37,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    # Méthode qui récupère le potin concerné et le détruit en base
-    # Une fois la suppression faite, on redirige généralement vers la méthode index (pour afficher la liste à jour)
+    def destroy
+      session[:user_id] = nil
+      redirect_to '/login'
+    end
   end
 end
