@@ -32,9 +32,14 @@
     <li class="breadcrumb-item active" aria-current="page">Habitant de : <a href="<%= city_path %>" role="button"> <%= @gossip.user.city.name %></li>
   </ol>
 </nav>
-  
-  <a class="btn btn-secondary " href="<%= edit_gossip_path %>" role="button">Modifier</a>
-  <a class="btn btn-outline-danger" href="<%= gossip_path(@gossip.id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE" role="button">Supprimer</a>
+      <% puts "*" * 60%>
+      <% puts current_user.id %>
+      <% puts @gossip.user_id %>
+        <% puts "*" * 60%>
+  <% if current_user.id == @gossip.user_id %>
+    <a class="btn btn-secondary " href="<%= edit_gossip_path %>" role="button">Modifier</a>
+    <a class="btn btn-outline-danger" href="<%= gossip_path(@gossip.id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE" role="button">Supprimer</a>
+  <% end %>
 <br/>
 <br/>
   <%= form_tag(comments_path, method: 'post') do %>
@@ -51,8 +56,8 @@
       <h4 class="desc-title">Commentaire de <%= comm.user_id %> </h4>
       <p class="desc"><%= comm.content %></p>
       <div class="show-edit">
-        <%= link_to 'Editer', edit_comment_path(comm.id), class:'article-btn', confirm: 'Êtes-vous sûr ?' %>
-        <%= link_to 'Supprimer', comment_path(comm.id), method: 'delete', class:'article-btn btn-grey'%>
+          <%= link_to 'Editer', edit_comment_path(comm.id), class:'article-btn', confirm: 'Êtes-vous sûr ?' %>
+          <%= link_to 'Supprimer', comment_path(comm.id), method: 'delete', class:'article-btn btn-grey'%>
       </div>
     </article>
   <% end %> 

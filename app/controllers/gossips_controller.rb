@@ -29,6 +29,9 @@ class GossipsController < ApplicationController
 
   def edit
     @gossip = Gossip.find(params[:id])
+    # if current_user != @gossip.user_id
+    #   render edit_gossip_path
+    # end
   end
 
   def destroy
