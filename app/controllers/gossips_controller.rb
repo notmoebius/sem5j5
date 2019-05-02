@@ -11,9 +11,11 @@ class GossipsController < ApplicationController
 
     if @gossip.save
       puts "The super potin was succesfully saved !"
+      flash[:success] = "Potin créé !"
       redirect_to '/'
     else
       puts "Error : you need to complete this field / the title must be at least 3 characters longue / etc."
+      flash[:danger] = "Erreur dans la création du potin !"
       render '/gossips/new'
     end
   end
@@ -21,8 +23,10 @@ class GossipsController < ApplicationController
   def update 
     @gossip = Gossip.find(params[:id])
     if @gossip.update('title' => params[:title], 'content' => params[:content], 'user_id' => @gossip.user_id)
+      flash[:success] = "Potin créé !"
       redirect_to @gossip
     else
+      flash[:notice] = "Un problème est survenu !"
       render :edit
     end
   end
@@ -37,6 +41,7 @@ class GossipsController < ApplicationController
   def destroy
     @gossip = Gossip.find(params[:id])
     @gossip.destroy
+    flash[:notice] = "Potin supprimé !"
     redirect_to gossips_path
   end
 
@@ -54,7 +59,7 @@ class GossipsController < ApplicationController
 
   def authenticate_user
     unless current_user
-      flash[:danger] = "Please log in."
+      flash[:danger] = "Vous devez être connecté"
       redirect_to new_session_path
     end
   end

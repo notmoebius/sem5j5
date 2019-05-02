@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       puts "Login is OK!"
+      flash[:success] = "Utilisateur connecté !"
       redirect_to '/'
     else
       flash.now[:danger] = 'Invalid email/password combination'
@@ -24,6 +25,7 @@ class SessionsController < ApplicationController
     session.delete(current_user.id)
     session[:user_id] = nil
     puts "Vous êtes déconnecté"
+    flash[:notice] = "Utilisateur déconnecté !"
     redirect_to '/'  # render :new   ??? a tester
   end
 end

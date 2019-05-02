@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def create
     if params[:password] == '' || params[:email] == ''
       puts "Error : you need to complete this field email/pw"
+      flash[:Notice] = "Utilisateur non créé"
       render '/users/new'
      else
 
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
         #@user = User.create('email': params[:email], 'password_digest': BCrypt::Password.create(params[:password])
         #@user = User.create('email': params[:email], 'password_digest': params[:password]) #ne crypte pas le PW
         puts "The user #{params[:email]}was succesfully saved !"
-        flash[:success] = "Utilisateur bien créé !"
+        flash[:success] = "Utilisateur créé !"
         log_in(@user)
         redirect_to '/'
      end
@@ -43,6 +44,7 @@ class UsersController < ApplicationController
   def destroy
     def destroy
       session[:user_id] = nil
+      flash[:notice] = "Utilisateur déconnecté !"
       redirect_to '/login'
     end
   end

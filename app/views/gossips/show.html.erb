@@ -29,7 +29,7 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page">Habitant de : <a href="<%= city_path %>" role="button"> <%= @gossip.user.city.name %></li>
+    <li class="breadcrumb-item active" aria-current="page">Habitant de : <a href="<%= city_path %>" role="button"> <%= @gossip.user.city.name %></a></li>
   </ol>
 </nav>
   <% if current_user.id == @gossip.user_id %>
