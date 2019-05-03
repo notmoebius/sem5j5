@@ -74,14 +74,14 @@ end
 puts 'Jeu d\'essai Tag_Gossip avec 10 items'
 
 # seed pour les city
-puts '-> Je charge un jeu d\'essai comment'
-30.times do
-  Comment.create!(
-    name: Faker::Address.city,
-    zip_code: Faker::Base.regexify(/[0-8][0-9][0-9]{3}/)
-  )
-end
-puts 'Jeu d\'essai Comment avec 30 items'
+#puts '-> Je charge un jeu d\'essai comment'
+#30.times do
+#  Comment.create!(
+#    name: Faker::Address.city,
+#    zip_code: Faker::Base.regexify(/[0-8][0-9][0-9]{3}/)
+#  )
+#end
+#puts 'Jeu d\'essai Comment avec 30 items'
 
 puts '***** Base de données chargée avec un seed ! Have a nive run.'
 
