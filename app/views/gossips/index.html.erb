@@ -14,7 +14,7 @@
 <%= link_to "Nouveau potin", new_gossip_path, class: "btn btn-secondary bg-info'" %>
 
 <div class="card-columns border-info container ">
-  <% Gossip.all.each do | gossip | %>
+  <% @gossips.each do | gossip | %>
     <div class="card border-info text-white bg-info mb-3">
     <div class="card-header bg-light text-warning">
         <%= link_to 'Auteur:', user_path(:id => gossip.user.id), style: "text-decoration: none" %>

@@ -21,9 +21,9 @@ class UsersController < ApplicationController
       render '/users/new'
      else
 
-        @user = User.create('last_name': params[:last_name], 'first_name': params[:first_name], 'email': params[:email], 'age': params[:age], 'password_digest': BCrypt::Password.create(params[:password]), 'description': params[:description], 'city_id': params[:city].to_i)
+        #@user = User.create('last_name': params[:last_name], 'first_name': params[:first_name], 'email': params[:email], 'age': params[:age], 'password_digest': BCrypt::Password.create(params[:password]), 'description': params[:description], 'city_id': params[:city].to_i)
         #@user = User.create('email': params[:email], 'password_digest': BCrypt::Password.create(params[:password])
-        #@user = User.create('email': params[:email], 'password_digest': params[:password]) #ne crypte pas le PW
+        @user = User.create('last_name': params[:last_name], 'first_name': params[:first_name], 'email': params[:email], 'age': params[:age], 'password': params[:password], 'description': params[:description], 'city_id': params[:city].to_i)
         puts "The user #{params[:email]}was succesfully saved !"
         flash[:success] = "Utilisateur créé !"
         log_in(@user)
