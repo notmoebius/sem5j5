@@ -1,6 +1,6 @@
 # The Gossip Project in Rails
 
-Projet avec Rails et CRUD, publish to Heroku
+Projet avec Rails et CRUD, publish to Heroku !!
 
 This applicaiton is made with love by **Alexandre Labonne (@Lab's)** and **Brice Jones (@brice)** from Toulouse.
 
