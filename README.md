@@ -14,7 +14,7 @@ This applicaiton is made with love by **Alexandre Labonne (@Lab's)** and **Brice
 ```$ rails --version Rails 5.2.3 ```
 
   - version PostGreSQL:
-
+ 
 ``` $ psql --version psql (PostgreSQL) 11.2 ```
 
 ## System dependencies
